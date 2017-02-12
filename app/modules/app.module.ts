@@ -11,6 +11,7 @@ import {HomeComponent} from "../components/home.component";
 import {TopicListComponent} from "../components/topic.list.component";
 import {TopicFormComponent} from "../components/topic.form.component";
 import {LoginService} from "../services/login.service";
+import {TopicService} from "../services/topic.service";
 
 const appRoutes: Routes = [
     {path: 'login', component: LoginComponent},
@@ -24,7 +25,7 @@ const appRoutes: Routes = [
     imports: [BrowserModule, HttpModule, ReactiveFormsModule, RouterModule.forRoot(appRoutes)],
     declarations: [AppComponent, LoginComponent, HomeComponent, TopicComponent, TopicListComponent, TopicFormComponent, PageNotFoundComponent],
     bootstrap: [AppComponent],
-    providers: [LoginService]
+    providers: [LoginService, TopicService]
 })
 export class AppModule {
 }

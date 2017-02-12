@@ -19,13 +19,14 @@ import {LoginService} from "../services/login.service";
 })
 export class LoginComponent {
 
-    public loginForm = this.fb.group({
+
+    constructor(private loginService: LoginService, private formBuilder: FormBuilder) {
+    }
+
+    public loginForm = this.formBuilder.group({
         username: ["", Validators.required],
         password: ["", Validators.required]
     });
-
-    constructor(private fb: FormBuilder, private loginService: LoginService) {
-    }
 
     doLogin(event) {
         console.log(event);
