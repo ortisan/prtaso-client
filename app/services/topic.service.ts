@@ -8,7 +8,6 @@ import {Injectable} from "@angular/core";
 export class TopicService {
 
     get(): Topic {
-
         return {
             id: 1,
             name: 'Teste',

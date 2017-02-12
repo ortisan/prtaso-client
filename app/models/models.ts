@@ -4,3 +4,9 @@ export class Topic {
     message: string;
     sendDate: Date;
 }
+
+export class User {
+    id: number;
+    username: string;
+    password: string;
+}
