@@ -10,6 +10,7 @@ import {PageNotFoundComponent} from "../components/pagenotfound.component";
 import {HomeComponent} from "../components/home.component";
 import {TopicListComponent} from "../components/topic.list.component";
 import {TopicFormComponent} from "../components/topic.form.component";
+import {LoginService} from "../services/login.service";
 
 const appRoutes: Routes = [
     {path: 'login', component: LoginComponent},
@@ -22,7 +23,8 @@ const appRoutes: Routes = [
 @NgModule({
     imports: [BrowserModule, HttpModule, ReactiveFormsModule, RouterModule.forRoot(appRoutes)],
     declarations: [AppComponent, LoginComponent, HomeComponent, TopicComponent, TopicListComponent, TopicFormComponent, PageNotFoundComponent],
-    bootstrap: [AppComponent]
+    bootstrap: [AppComponent],
+    providers: [LoginService]
 })
 export class AppModule {
 }

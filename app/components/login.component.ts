@@ -1,12 +1,13 @@
 import {Component} from "@angular/core";
 import {Validators, FormBuilder} from "@angular/forms";
+import {LoginService} from "../services/login.service";
 @Component({
     selector: 'login',
     template: `
         <form [formGroup]="loginForm" (ngSubmit)="doLogin($event)">
          <div class="form-group">
-                <label for="email">Email address</label>
-                <input class="form-control" id="email" formControlName="email" type="email" placeholder="Your email">
+                <label for="username">Username</label>
+                <input class="form-control" id="username" formControlName="username" type="text" placeholder="Your username">
             </div>
             <div class="form-group">
                 <label for="password">Password</label>
@@ -19,15 +20,25 @@ import {Validators, FormBuilder} from "@angular/forms";
 export class LoginComponent {
 
     public loginForm = this.fb.group({
-        email: ["", Validators.required],
+        username: ["", Validators.required],
         password: ["", Validators.required]
     });
 
-    constructor(public fb: FormBuilder) {
+    constructor(private fb: FormBuilder, private loginService: LoginService) {
     }
 
     doLogin(event) {
         console.log(event);
         console.log(this.loginForm.value)
+
+
+        this.loginService.postLogin(this.loginForm.value).subscribe(
+            user => {
+                console.log("teste");
+            },
+            err => {
+                // Log errors if any
+                console.log(err);
+            });
     }
 }
