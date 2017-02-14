@@ -1,10 +1,11 @@
 import {Component} from "@angular/core";
 import {Validators, FormBuilder} from "@angular/forms";
-import {LoginService} from "../services/login.service";
+import {UserService} from "../services/user.service";
+import {Router} from "@angular/router";
 @Component({
-    selector: 'login',
+    selector: 'signin',
     template: `
-        <form [formGroup]="loginForm" (ngSubmit)="doLogin($event)">
+        <form [formGroup]="signinForm" (ngSubmit)="doSignin($event)">
          <div class="form-group">
                 <label for="username">Username</label>
                 <input class="form-control" id="username" formControlName="username" type="text" placeholder="Your username">
@@ -13,32 +14,27 @@ import {LoginService} from "../services/login.service";
                 <label for="password">Password</label>
                 <input class="form-control" id="password" formControlName="password" type="password" placeholder="Your password">
              </div>   
-            <button type="submit" class="btn btn-default">Log in</button>
+            <button type="submit" class="btn btn-default">Sign in</button>
         </form>
     `
 })
-export class LoginComponent {
+export class SigninComponent {
 
-
-    constructor(private loginService: LoginService, private formBuilder: FormBuilder) {
+    constructor(private userService: UserService, private router: Router, private formBuilder: FormBuilder) {
     }
 
-    public loginForm = this.formBuilder.group({
+    public signinForm = this.formBuilder.group({
         username: ["", Validators.required],
         password: ["", Validators.required]
     });
 
-    doLogin(event) {
-        console.log(event);
-        console.log(this.loginForm.value)
-
-
-        this.loginService.postLogin(this.loginForm.value).subscribe(
-            user => {
-                console.log("teste");
+    doSignin(event) {
+        this.userService.postSignin(this.signinForm.value).subscribe(
+            (token: string) => {
+                localStorage.setItem("token", token);
+                this.router.navigateByUrl("/home");
             },
             err => {
-                // Log errors if any
                 console.log(err);
             });
     }

@@ -7,7 +7,8 @@ import {Component} from "@angular/core";
 <div class="container">
     <h1>{{title}}</h1>
     <nav>
-        <a routerLink="/login">Login</a>
+        <a routerLink="/register">Register</a>
+        <a routerLink="/signin">Sign in - DEV</a>
         <a routerLink="/home" routerLinkActive="active">Home</a>
         <a routerLink="/topic">Tópicos</a>
     </nav>
