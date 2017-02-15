@@ -29,6 +29,7 @@
     "angular-in-memory-web-api": "~0.2.4",
     "core-js": "^2.4.1",
     "lodash": "^4.17.4",
+    "ng2-datetime-picker": "^0.14.1",
     "rxjs": "5.0.1",
     "storejs": "^1.0.13",
     "systemjs": "0.19.40",

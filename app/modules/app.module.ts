@@ -3,15 +3,15 @@ import {BrowserModule} from "@angular/platform-browser";
 import {HttpModule} from "@angular/http";
 import {ReactiveFormsModule} from "@angular/forms";
 import {Routes, RouterModule} from "@angular/router";
-import {AppComponent} from "../components/app.component";
-import {RegisterComponent} from "../components/register.component";
-import {SigninComponent} from "../components/signin.component";
-import {TopicComponent} from "../components/topic.component";
-import {PageNotFoundComponent} from "../components/pagenotfound.component";
-import {HomeComponent} from "../components/home.component";
-import {TopicListComponent} from "../components/topic.list.component";
-import {TopicFormComponent} from "../components/topic.form.component";
-import {TopicService} from "../services/topic.service";
+import {AppComponent} from "../app.component";
+import {RegisterComponent} from "../auth/register.component";
+import {SigninComponent} from "../auth/signin.component";
+import {TopicComponent} from "../topic/topic.component";
+import {PageNotFoundComponent} from "../errors/pagenotfound.component";
+import {HomeComponent} from "../home/home.component";
+import {TopicListComponent} from "../topic/topic.list.component";
+import {TopicFormComponent} from "../topic/topic.form.component";
+import {TopicService} from "../topic/topic.service";
 import {UserService} from "../services/user.service";
 
 const appRoutes: Routes = [

@@ -1,6 +1,6 @@
 export class Topic {
     id: number;
-    name: string;
+    title: string;
     message: string;
     sendDate: Date;
 }
