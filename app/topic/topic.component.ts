@@ -1,8 +1,8 @@
 import {Component} from "@angular/core";
-import {TopicService} from "./topic.service";
+import {TopicService} from "../general/services/topic.service";
 import {Router} from "@angular/router";
 import {FormBuilder, Validators} from "@angular/forms";
-import {Topic} from "../models/models";
+import {Topic} from "../general/models/models";
 @Component({
     selector: 'topic',
     template: `

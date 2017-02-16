@@ -11,8 +11,8 @@ import {PageNotFoundComponent} from "../errors/pagenotfound.component";
 import {HomeComponent} from "../home/home.component";
 import {TopicListComponent} from "../topic/topic.list.component";
 import {TopicFormComponent} from "../topic/topic.form.component";
-import {TopicService} from "../topic/topic.service";
-import {UserService} from "../services/user.service";
+import {TopicService} from "../general/services/topic.service";
+import {UserService} from "../general/services/user.service";
 
 const appRoutes: Routes = [
     {path: 'register', component: RegisterComponent},

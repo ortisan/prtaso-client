@@ -1,23 +1,16 @@
 import {Component} from "@angular/core";
 
 @Component({
-    selector: 'my-app',
+    selector: 'app-root',
     template: `
 
-<div class="container">
-    <h1>{{title}}</h1>
-    <nav>
-        <a routerLink="/register">Register</a>
-        <a routerLink="/signin">Sign in - DEV</a>
-        <a routerLink="/home" routerLinkActive="active">Home</a>
-        <a routerLink="/topic">Tópicos</a>
-    </nav>
-    
-    <router-outlet></router-outlet>
-</div>
+<layout-header></layout-header>
+
+<router-outlet></router-outlet>
+
+<layout-footer></layout-footer>
 
 `
 })
 export class AppComponent {
-    title = 'PRTASO';
 }

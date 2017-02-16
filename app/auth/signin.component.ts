@@ -1,6 +1,6 @@
 import {Component} from "@angular/core";
 import {Validators, FormBuilder} from "@angular/forms";
-import {UserService} from "../services/user.service";
+import {UserService} from "../general/services/user.service";
 import {Router} from "@angular/router";
 @Component({
     selector: 'signin',

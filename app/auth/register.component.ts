@@ -1,8 +1,8 @@
 import {Component} from "@angular/core";
 import {Validators, FormBuilder} from "@angular/forms";
 import {Router} from "@angular/router";
-import {UserService} from "../services/user.service";
-import {User} from "../models/models";
+import {UserService} from "../general/services/user.service";
+import {User} from "../general/models/models";
 @Component({
     selector: 'register',
     template: `
