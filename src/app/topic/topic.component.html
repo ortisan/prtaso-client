@@ -1,0 +1,22 @@
+<h1>Topic</h1>
+
+<div class="container">
+  <form [formGroup]="topicForm" (ngSubmit)="doSave($event)">
+    <div class="form-group">
+      <label for="title">Title</label>
+      <input class="form-control" id="title" formControlName="title" type="text" placeholder="Topic title">
+    </div>
+
+    <div class="form-group">
+      <label for="message">Message</label>
+      <textarea class="form-control" id="message" formControlName="message" rows="3"></textarea>
+    </div>
+
+    <div class="form-group">
+      <label for="sendDate">Send Date</label>
+      <input class="form-control" id="sendDate" formControlName="sendDate" type="datetime" placeholder="Send Date">
+    </div>
+
+    <button type="submit" class="btn btn-default">Save</button>
+  </form>
+</div>
