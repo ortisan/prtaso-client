@@ -1,9 +1,10 @@
 import {Component} from "@angular/core";
 import {Validators, FormBuilder} from "@angular/forms";
-import {UserService} from "../general/services";
+import {UserService} from "../shared/services/user.service";
+
 @Component({
   selector: 'register',
-  templateUrl: 'register.html'
+  templateUrl: 'register.component.html'
 })
 export class RegisterComponent {
 
@@ -16,7 +17,7 @@ export class RegisterComponent {
     password: ['', Validators.required],
   });
 
-  doRegister(event) {
+  doRegister(event: any) {
     this.userService.save(this.registerForm.value)
   }
 }

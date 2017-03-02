@@ -1,18 +1,17 @@
-import { Injectable } from '@angular/core';
-import { environment } from '../../environments/environment';
-import { Headers, Http, Response, URLSearchParams } from '@angular/http';
-import { Observable } from 'rxjs/Rx';
+import {Injectable} from '@angular/core';
+import {environment} from '../../environments/environment';
+import {Headers, Http, Response, URLSearchParams} from '@angular/http';
+import {Observable} from 'rxjs/Rx';
 import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/catch';
 
-import { JwtService } from './jwt.service';
+import {JwtService} from './jwt.service';
 
 @Injectable()
 export class ApiService {
-  constructor(
-    private http: Http,
-    private jwtService: JwtService
-  ) {}
+  constructor(private http: Http,
+              private jwtService: JwtService) {
+  }
 
   private setHeaders(): Headers {
     let headersConfig = {
@@ -27,41 +26,41 @@ export class ApiService {
   }
 
   private formatErrors(error: any) {
-     return Observable.throw(error.json());
+    return Observable.throw(error.json());
   }
 
   get(path: string, params: URLSearchParams = new URLSearchParams()): Observable<any> {
-    return this.http.get(`${environment.api_url}${path}`, { headers: this.setHeaders(), search: params })
-    .catch(this.formatErrors)
-    .map((res:Response) => res.json());
+    return this.http.get(`${environment.api_url}${path}`, {headers: this.setHeaders(), search: params})
+      .catch(this.formatErrors)
+      .map((res: Response) => res.json());
   }
 
   put(path: string, body: Object = {}): Observable<any> {
     return this.http.put(
       `${environment.api_url}${path}`,
       JSON.stringify(body),
-      { headers: this.setHeaders() }
+      {headers: this.setHeaders()}
     )
-    .catch(this.formatErrors)
-    .map((res:Response) => res.json());
+      .catch(this.formatErrors)
+      .map((res: Response) => res.json());
   }
 
   post(path: string, body: Object = {}): Observable<any> {
     return this.http.post(
       `${environment.api_url}${path}`,
       JSON.stringify(body),
-      { headers: this.setHeaders() }
+      {headers: this.setHeaders()}
     )
-    .catch(this.formatErrors)
-    .map((res:Response) => res.json());
+      .catch(this.formatErrors)
+      .map((res: Response) => res.json());
   }
 
-  delete(path): Observable<any> {
+  delete(path: string): Observable<any> {
     return this.http.delete(
       `${environment.api_url}${path}`,
-      { headers: this.setHeaders() }
+      {headers: this.setHeaders()}
     )
-    .catch(this.formatErrors)
-    .map((res:Response) => res.json());
+      .catch(this.formatErrors)
+      .map((res: Response) => res.json());
   }
 }

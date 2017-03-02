@@ -1,6 +1,6 @@
 import {Component} from "@angular/core";
 import {Validators, FormBuilder} from "@angular/forms";
-import {UserService} from "../general/services";
+import {UserService} from "../shared/services/user.service";
 @Component({
   selector: 'signin',
   templateUrl: 'signin.component.html'
@@ -15,7 +15,7 @@ export class SigninComponent {
     password: ['', Validators.required]
   });
 
-  doSignin(event) {
+  doSignin(event: any) {
     this.userService.signin(this.signinForm.value);
   }
 }

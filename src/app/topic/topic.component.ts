@@ -1,5 +1,5 @@
 import {Component} from "@angular/core";
-import {TopicService} from "../general/services/topic.service";
+import {TopicService} from "../shared/services/topic.service";
 import {FormBuilder, Validators} from "@angular/forms";
 @Component({
   selector: 'topic',
@@ -16,7 +16,7 @@ export class TopicComponent {
     message: ['', Validators.required],
   });
 
-  save(event) {
+  save(event: any) {
     return this.topicService.save(this.topicForm.value)
   }
 

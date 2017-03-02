@@ -2,9 +2,9 @@
  * Created by marcelo on 30/01/17.
  */
 import {Injectable} from "@angular/core";
-import {Topic} from "../models";
 import {Observable} from "rxjs/Rx";
 import {ApiService} from "./api.service";
+import {Topic} from "../models/topic.model";
 
 @Injectable()
 export class TopicService {
