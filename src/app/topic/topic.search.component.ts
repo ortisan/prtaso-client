@@ -1,13 +1,20 @@
-import {Component} from "@angular/core";
+import {Component, OnInit} from "@angular/core";
 import {TopicService} from "../shared/services/topic.service";
 import {FormBuilder, Validators} from "@angular/forms";
+import {Observable} from "rxjs";
+import {Topic} from "../shared/models/topic.model";
 
 
 @Component({
-  selector: 'topic',
-  templateUrl: 'topic.component.html'
+  selector: 'topic-list',
+  templateUrl: 'topic.search.component.html'
 })
-export class TopicComponent {
+export class TopicSearchComponent implements OnInit {
+
+  topics: Observable<Topic>;
+
+  ngOnInit(): void {
+  }
 
   constructor(private topicService: TopicService, private formBuilder: FormBuilder) {
   }
@@ -22,4 +29,7 @@ export class TopicComponent {
     return this.topicService.save(this.topicForm.value)
   }
 
+  search() {
+    this.topics = this.topicService.getTopics()
+  }
 }

@@ -19,21 +19,19 @@ import {TopicService} from "./shared/services/topic.service";
 
 const appRoutes: Routes = [
   {path: 'register', component: RegisterComponent},
-  // {path: 'signin', component: SigninComponent},
+  {path: 'signin', component: SigninComponent},
   {path: 'home', component: HomeComponent},
-  // {path: 'topic', component: TopicComponent},
+  {path: 'topic', component: TopicComponent},
   {path: '', redirectTo: '/home', pathMatch: 'full'},
-  // {path: '**', component: PageNotFoundComponent}
+  {path: '**', component: PageNotFoundComponent}
 ];
 
 
 @NgModule({
   imports: [BrowserModule, HttpModule, ReactiveFormsModule, RouterModule.forRoot(appRoutes)],
-  // declarations: [AppComponent, HeaderComponent, FooterComponent, PageNotFoundComponent, HomeComponent, RegisterComponent, SigninComponent, TopicComponent],
-  declarations: [AppComponent, HomeComponent, HeaderComponent, FooterComponent, RegisterComponent],
+  declarations: [AppComponent, HomeComponent, HeaderComponent, FooterComponent, RegisterComponent, SigninComponent, TopicComponent, PageNotFoundComponent],
   bootstrap: [AppComponent],
   providers: [ApiService, JwtService, UserService, TopicService]
-  // providers: [ApiService, JwtService, UserService, TopicService]
 })
 export class AppModule {
 }
