@@ -1,22 +1,26 @@
 import {Component, OnInit} from "@angular/core";
-import {TopicService} from "../shared/services/topic.service";
+import {TopicService} from "./topic.service";
 import {FormBuilder, Validators} from "@angular/forms";
 import {Observable} from "rxjs";
 import {Topic} from "../shared/models/topic.model";
+import {Router} from "@angular/router";
 
 
 @Component({
-  selector: 'topic-list',
+  selector: 'topic-search',
   templateUrl: 'topic.search.component.html'
 })
 export class TopicSearchComponent implements OnInit {
 
-  topics: Observable<Topic>;
+  private topics: Topic[];
 
   ngOnInit(): void {
+    this.getAll();
   }
 
-  constructor(private topicService: TopicService, private formBuilder: FormBuilder) {
+  constructor(private router: Router,
+              private topicService: TopicService,
+              private formBuilder: FormBuilder) {
   }
 
   public topicForm = this.formBuilder.group({
@@ -25,11 +29,11 @@ export class TopicSearchComponent implements OnInit {
     message: ['', Validators.required],
   });
 
-  save(event: any) {
-    return this.topicService.save(this.topicForm.value)
+  onSelect(topic: Topic) {
+    this.router.navigate(["/topic", topic.id])
   }
 
-  search() {
-    this.topics = this.topicService.getTopics()
+  getAll() {
+    this.topicService.getTopics().subscribe((topics: Topic[]) => this.topics = topics);
   }
 }

@@ -1,5 +1,5 @@
 import {Component} from "@angular/core";
-import {TopicService} from "../shared/services/topic.service";
+import {TopicService} from "./topic.service";
 import {FormBuilder, Validators} from "@angular/forms";
 
 

@@ -14,14 +14,18 @@ import {JwtService} from "./shared/services/jwt.service";
 import {ApiService} from "./shared/services/api.service";
 import {UserService} from "./shared/services/user.service";
 import {FooterComponent} from "./shared/layout/footer.component";
-import {TopicService} from "./shared/services/topic.service";
+import {TopicService} from "./topic/topic.service";
+import {TopicSearchComponent} from "./topic/topic.search.component";
+import {TopicDetailComponent} from "./topic/topic.detail.component";
+import {TopicModule} from "./topic/topic.module";
 
 
 const appRoutes: Routes = [
   {path: 'register', component: RegisterComponent},
   {path: 'signin', component: SigninComponent},
   {path: 'home', component: HomeComponent},
-  {path: 'topic', component: TopicComponent},
+  {path: 'topic', component: TopicSearchComponent},
+  {path: 'topic/:id', component: TopicDetailComponent},
   {path: '', redirectTo: '/home', pathMatch: 'full'},
   {path: '**', component: PageNotFoundComponent}
 ];
@@ -29,7 +33,7 @@ const appRoutes: Routes = [
 
 @NgModule({
   imports: [BrowserModule, HttpModule, ReactiveFormsModule, RouterModule.forRoot(appRoutes)],
-  declarations: [AppComponent, HomeComponent, HeaderComponent, FooterComponent, RegisterComponent, SigninComponent, TopicComponent, PageNotFoundComponent],
+  declarations: [AppComponent, PageNotFoundComponent, HomeComponent, HeaderComponent, FooterComponent, RegisterComponent, SigninComponent, TopicSearchComponent, TopicDetailComponent, TopicComponent],
   bootstrap: [AppComponent],
   providers: [ApiService, JwtService, UserService, TopicService]
 })
