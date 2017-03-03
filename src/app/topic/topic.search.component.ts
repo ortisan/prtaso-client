@@ -33,6 +33,10 @@ export class TopicSearchComponent implements OnInit {
     this.router.navigate(["/topic", topic.id])
   }
 
+  new() {
+    this.router.navigate(["/topic-form"])
+  }
+
   getAll() {
     this.topicService.getTopics().subscribe((topics: Topic[]) => this.topics = topics);
   }

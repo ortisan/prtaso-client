@@ -1,6 +1,9 @@
 <div class="container">
   <h1>Topic</h1>
-  <form [formGroup]="topicForm" (ngSubmit)="doSave($event)">
+  <form [formGroup]="topicForm" (ngSubmit)="onSaveOrUpdate($event)">
+
+    <input id="id" formControlName="id" type="hidden">
+
     <div class="form-group">
       <label for="title">Title</label>
       <input class="form-control" id="title" formControlName="title" type="text" placeholder="Topic title">

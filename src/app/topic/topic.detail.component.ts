@@ -19,9 +19,12 @@ export class TopicDetailComponent implements OnInit {
     this.route.params.switchMap((params: Params) => this.topicService.getTopic(+params["id"])).subscribe((topic: Topic) => this.topic = topic);
   }
 
+  edit() {
+    this.router.navigate(['/topic-form', this.topic.id]);
+  }
+
   gotoTopic() {
     this.router.navigate(['/topic']);
   }
-
 
 }

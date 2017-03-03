@@ -5,6 +5,9 @@
       <div *ngFor="let topic of topics">
         <button (click)="onSelect(topic)">{{topic.title}}</button>
       </div>
+
+      <button (click)="new()">New</button>
+
     </div>
   </div>
 
