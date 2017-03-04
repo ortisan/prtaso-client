@@ -17,7 +17,7 @@ export class RegisterComponent {
     password: ['', Validators.required],
   });
 
-  doRegister(event: any) {
+  register(event: any) {
     this.userService.save(this.registerForm.value)
   }
 }

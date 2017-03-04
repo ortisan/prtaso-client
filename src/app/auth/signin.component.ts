@@ -15,7 +15,7 @@ export class SigninComponent {
     password: ['', Validators.required]
   });
 
-  doSignin(event: any) {
-    this.userService.signin(this.signinForm.value);
+  login(event: any) {
+    this.userService.login(this.signinForm.value);
   }
 }

@@ -17,6 +17,7 @@ import {FooterComponent} from "./shared/layout/footer.component";
 import {TopicService} from "./topic/topic.service";
 import {TopicSearchComponent} from "./topic/topic.search.component";
 import {TopicDetailComponent} from "./topic/topic.detail.component";
+import {SecurityActivate} from "./auth/security.activate";
 
 
 const appRoutes: Routes = [
@@ -36,7 +37,8 @@ const appRoutes: Routes = [
   imports: [BrowserModule, HttpModule, ReactiveFormsModule, RouterModule.forRoot(appRoutes)],
   declarations: [AppComponent, PageNotFoundComponent, HomeComponent, HeaderComponent, FooterComponent, RegisterComponent, SigninComponent, TopicSearchComponent, TopicDetailComponent, TopicFormComponent],
   bootstrap: [AppComponent],
-  providers: [ApiService, JwtService, UserService, TopicService]
+  providers: [ApiService, JwtService, UserService, TopicService, SecurityActivate]
+
 })
 export class AppModule {
 }

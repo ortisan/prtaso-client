@@ -1,5 +1,5 @@
 <div class="container">
-  <form [formGroup]="signinForm" (ngSubmit)="doSignin($event)">
+  <form [formGroup]="signinForm" (ngSubmit)="login($event)">
     <div class="form-group">
       <label for="username">Username</label>
       <input class="form-control" id="username" formControlName="username" type="text" placeholder="Your username">
