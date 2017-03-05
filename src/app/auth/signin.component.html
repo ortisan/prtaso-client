@@ -1,5 +1,10 @@
 <div class="container">
-  <form [formGroup]="signinForm" (ngSubmit)="login($event)">
+
+  <div class="alert alert-danger" role="alert" *ngIf="hasErrors">
+    <strong>Error!</strong> Verify your username and password.
+  </div>
+
+  <form [formGroup]="signinForm" (ngSubmit)="signin($event)">
     <div class="form-group">
       <label for="username">Username</label>
       <input class="form-control" id="username" formControlName="username" type="text" placeholder="Your username">

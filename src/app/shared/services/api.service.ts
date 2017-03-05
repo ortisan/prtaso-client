@@ -16,7 +16,7 @@ export class ApiService {
   private setHeaders(): Headers {
     let headersConfig = {
       'Content-Type': 'application/json',
-      'Accept': 'application/json'
+      'Accept': 'application/json',
     };
 
     if (this.jwtService.getToken()) {
@@ -26,7 +26,7 @@ export class ApiService {
   }
 
   private formatErrors(error: any) {
-    return Observable.throw(error.json());
+    return Observable.throw(error.json() || "Server error");
   }
 
   get(path: string, params: URLSearchParams = new URLSearchParams()): Observable<any> {
@@ -46,13 +46,17 @@ export class ApiService {
   }
 
   post(path: string, body: Object = {}): Observable<any> {
+    console.log(`Making post`);
+    console.log(`Path: ${environment.api_url}${path}`);
+    console.log(`Body:${body}`);
+
     return this.http.post(
       `${environment.api_url}${path}`,
-      JSON.stringify(body),
-      {headers: this.setHeaders()}
+      JSON.stringify(body), {headers: this.setHeaders()}
     )
-      .catch(this.formatErrors)
-      .map((res: Response) => res.json());
+      .map((res: Response) => res.json())
+      .catch(this.formatErrors);
+
   }
 
   delete(path: string): Observable<any> {

@@ -18,6 +18,6 @@ export class RegisterComponent {
   });
 
   register(event: any) {
-    this.userService.save(this.registerForm.value)
+    this.userService.save(this.registerForm.value).subscribe()
   }
 }

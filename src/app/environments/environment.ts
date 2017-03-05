@@ -5,5 +5,5 @@
 
 export const environment = {
   production: false,
-  api_url: 'http://localhost:8080/ptarso/api'
+  api_url: 'http://localhost:8080/prtaso/api'
 };
