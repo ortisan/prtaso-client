@@ -22,7 +22,7 @@ export class ApiService {
     let token = this.storageService.getToken();
 
     if (token) {
-      headersConfig['Authorization'] = `Token ${token}`;
+      headersConfig['Authorization'] = `Bearer ${token}`;
     }
 
     return new Headers(headersConfig);

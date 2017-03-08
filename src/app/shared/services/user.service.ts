@@ -14,7 +14,7 @@ export class UserService {
     return this.storageService.getCurrentUser() != null;
   }
 
-  save(user: User): Observable<User> {
+  save(user: User): Observable<any> {
     return this.apiService.post('/user', user);
   }
 
