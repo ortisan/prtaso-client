@@ -5,7 +5,7 @@
   <a class="navbar-brand" href="#">PRTASO</a>
 
   <div class="collapse navbar-collapse" data-toggle="collapse" data-target=".navbar-nav">
-    <ng-container *ngIf="isAuthenticated">
+    <ng-container *ngIf="isAuthenticated()">
       <ul class="navbar-nav mr-auto">
         <li class="nav-item active">
           <a class="nav-link" href="#">Home</a>
@@ -18,19 +18,24 @@
           </a>
         </li>
       </ul>
+
+      <a class="btn btn-link btn-outline-primary" href="#" (click)="logout()">
+        Logout
+      </a>
     </ng-container>
 
-    <a class="btn btn-link btn-outline-primary"
-       routerLink="/signin"
-       routerLinkActive="active">
-      Signin
-    </a>
-
-    <a class="btn btn-link btn-outline-primary"
-       routerLink="/register"
-       routerLinkActive="active">
-      Signup
-    </a>
+    <ng-container *ngIf="!isAuthenticated()">
+      <a class="btn btn-link btn-outline-primary"
+         routerLink="/signin"
+         routerLinkActive="active">
+        Signin
+      </a>
+      <a class="btn btn-link btn-outline-primary"
+         routerLink="/register"
+         routerLinkActive="active">
+        Signup
+      </a>
+    </ng-container>
 
   </div>
 </nav>

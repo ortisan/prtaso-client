@@ -5,12 +5,12 @@ import {Observable} from 'rxjs/Rx';
 import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/catch';
 
-import {JwtService} from './jwt.service';
+import {StorageService} from './storage.service';
 
 @Injectable()
 export class ApiService {
   constructor(private http: Http,
-              private jwtService: JwtService) {
+              private storageService: StorageService) {
   }
 
   private setHeaders(): Headers {
@@ -19,9 +19,12 @@ export class ApiService {
       'Accept': 'application/json',
     };
 
-    if (this.jwtService.getToken()) {
-      headersConfig['Authorization'] = `Token ${this.jwtService.getToken()}`;
+    let token = this.storageService.getToken();
+
+    if (token) {
+      headersConfig['Authorization'] = `Token ${token}`;
     }
+
     return new Headers(headersConfig);
   }
 
@@ -46,10 +49,6 @@ export class ApiService {
   }
 
   post(path: string, body: Object = {}): Observable<any> {
-    console.log(`Making post`);
-    console.log(`Path: ${environment.api_url}${path}`);
-    console.log(`Body:${body}`);
-
     return this.http.post(
       `${environment.api_url}${path}`,
       JSON.stringify(body), {headers: this.setHeaders()}

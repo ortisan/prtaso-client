@@ -10,7 +10,7 @@ import {SigninComponent} from "./auth/signin.component";
 import {RegisterComponent} from "./auth/register.component";
 import {TopicFormComponent} from "./topic/topic.form.component";
 import {HeaderComponent} from "./shared/layout/header.component";
-import {JwtService} from "./shared/services/jwt.service";
+import {StorageService} from "./shared/services/storage.service";
 import {ApiService} from "./shared/services/api.service";
 import {UserService} from "./shared/services/user.service";
 import {FooterComponent} from "./shared/layout/footer.component";
@@ -37,7 +37,7 @@ const appRoutes: Routes = [
   imports: [BrowserModule, HttpModule, ReactiveFormsModule, RouterModule.forRoot(appRoutes)],
   declarations: [AppComponent, PageNotFoundComponent, HomeComponent, HeaderComponent, FooterComponent, RegisterComponent, SigninComponent, TopicSearchComponent, TopicDetailComponent, TopicFormComponent],
   bootstrap: [AppComponent],
-  providers: [ApiService, JwtService, UserService, TopicService, SecurityActivate]
+  providers: [ApiService, StorageService, UserService, TopicService, SecurityActivate]
 
 })
 export class AppModule {

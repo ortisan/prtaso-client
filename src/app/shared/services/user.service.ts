@@ -2,17 +2,16 @@ import {Injectable} from "@angular/core";
 import {Observable} from "rxjs/Rx";
 import {ApiService} from "./api.service";
 import {User} from "../models/user.model";
+import {StorageService} from "./storage.service";
 
 @Injectable()
 export class UserService {
 
-  public token: string;
-
-  constructor(private apiService: ApiService) {
+  constructor(private apiService: ApiService, private storageService: StorageService) {
   }
 
   isAuthenticated(): boolean {
-    return this.token != null;
+    return this.storageService.getCurrentUser() != null;
   }
 
   save(user: User): Observable<User> {
@@ -20,14 +19,10 @@ export class UserService {
   }
 
   signin(user: User): Observable <boolean> {
-    console.log("posting...")
-
     return this.apiService.post('/signin', user).map((token: any) => {
-      console.log("success");
       if (token) {
-        this.token = token;
         user.token = token;
-        localStorage.setItem('currentUser', JSON.stringify(user));
+        this.storageService.saveCurrentUser(user);
         return true;
       } else {
         return false;
@@ -36,7 +31,6 @@ export class UserService {
   }
 
   logout(): void {
-    this.token = null;
-    localStorage.removeItem('currentUser');
+    this.storageService.deleteCurrentUser();
   }
 }
