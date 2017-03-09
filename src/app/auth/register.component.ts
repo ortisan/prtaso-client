@@ -3,6 +3,7 @@ import {Validators, FormBuilder} from "@angular/forms";
 import {UserService} from "../shared/services/user.service";
 import {User} from "../shared/models/user.model";
 import {Router} from "@angular/router";
+import {StorageService} from "../shared/services/storage.service";
 
 @Component({
   selector: 'register',
@@ -12,7 +13,7 @@ export class RegisterComponent {
 
   hasErrors: boolean;
 
-  constructor(private userService: UserService, private router: Router, private formBuilder: FormBuilder) {
+  constructor(private userService: UserService, private storageService: StorageService, private router: Router, private formBuilder: FormBuilder) {
   }
 
   public registerForm = this.formBuilder.group({
@@ -23,7 +24,7 @@ export class RegisterComponent {
 
   register(event: any) {
     this.userService.save(this.registerForm.value).subscribe((user: User) => {
-      this.userService.save(user);
+      this.storageService.saveCurrentUser(user);
       this.router.navigate(['/home']);
       this.hasErrors = false;
     }, (error) => this.hasErrors = true);
