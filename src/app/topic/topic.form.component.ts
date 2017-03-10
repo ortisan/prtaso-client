@@ -3,7 +3,7 @@ import {TopicService} from "./topic.service";
 import {FormBuilder, Validators, FormGroup} from "@angular/forms";
 import {Router, ActivatedRoute, Params} from "@angular/router";
 import {Topic} from "../shared/models/topic.model";
-
+import * as moment from 'moment'
 
 @Component({
   selector: 'topic-form',
@@ -13,6 +13,7 @@ export class TopicFormComponent implements OnInit {
 
   private topic: Topic = new Topic();
   private topicForm: FormGroup;
+  private hasErrors: boolean;
 
 
   constructor(private route: ActivatedRoute,
@@ -27,14 +28,17 @@ export class TopicFormComponent implements OnInit {
       this.topicForm = this.formBuilder.group({
         id: [this.topic.id, Validators.required],
         title: [this.topic.title, Validators.required],
-        sendDate: [this.topic.sendDate, Validators.required],
+        sendDate: [moment(this.topic.sendDate).format("YYYY-MM-DDThh:mm")],
         message: [this.topic.message, Validators.required],
       });
     });
   }
 
   onSaveOrUpdate(event: any) {
-    return this.topicService.save(this.topicForm.value)
+    return this.topicService.save(this.topicForm.value).subscribe((topic: Topic) => {
+      this.router.navigate(['/topics']);
+      this.hasErrors = false;
+    }, (error) => this.hasErrors = true);
   }
 
   gotoTopic() {

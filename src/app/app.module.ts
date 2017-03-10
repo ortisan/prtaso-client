@@ -18,7 +18,8 @@ import {TopicService} from "./topic/topic.service";
 import {TopicSearchComponent} from "./topic/topic.search.component";
 import {TopicDetailComponent} from "./topic/topic.detail.component";
 import {SecurityActivate} from "./auth/security.activate";
-
+import {DateTimePickerModule} from 'ng2-date-time-picker';
+import {LoggerService} from "./shared/services/logger.service";
 
 const appRoutes: Routes = [
   {path: 'register', component: RegisterComponent},
@@ -34,10 +35,10 @@ const appRoutes: Routes = [
 
 
 @NgModule({
-  imports: [BrowserModule, HttpModule, ReactiveFormsModule, RouterModule.forRoot(appRoutes)],
+  imports: [DateTimePickerModule, BrowserModule, HttpModule, ReactiveFormsModule, RouterModule.forRoot(appRoutes)],
   declarations: [AppComponent, PageNotFoundComponent, HomeComponent, HeaderComponent, FooterComponent, RegisterComponent, SigninComponent, TopicSearchComponent, TopicDetailComponent, TopicFormComponent],
   bootstrap: [AppComponent],
-  providers: [ApiService, StorageService, UserService, TopicService, SecurityActivate]
+  providers: [ApiService, StorageService, UserService, TopicService, SecurityActivate, LoggerService]
 
 })
 export class AppModule {

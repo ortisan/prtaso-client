@@ -2,4 +2,9 @@
 body {
   padding-top: 5rem;
 }
+
 /*END STARTER TEMPLATE CSS*/
+
+.selectable {
+  cursor: pointer;
+}

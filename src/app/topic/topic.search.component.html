@@ -1,14 +1,26 @@
 <div class="container">
   <div id="search-component">
     <h4>Topics</h4>
-    <div>
-      <div *ngFor="let topic of topics">
-        <button (click)="onSelect(topic)">{{topic.title}}</button>
-      </div>
 
-      <button (click)="new()">New</button>
+    <button type="button" class="btn btn-secondary float-right" (click)="new()">New</button>
 
-    </div>
+    <table class="table" *ngIf="topics">
+      <thead>
+      <tr>
+        <th>#</th>
+        <th>Title</th>
+        <th>Created By</th>
+        <th>Send Date</th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr *ngFor="let topic of topics" (click)="select(topic)" class="selectable">
+        <th scope="row">{{topic.id}}</th>
+        <td>{{topic.title}}</td>
+        <td>tentativafc</td>
+        <td>{{topic.sendDate | date: 'dd/MM/yyyy'}}</td>
+      </tr>
+      </tbody>
+    </table>
   </div>
-
 </div>

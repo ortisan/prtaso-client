@@ -18,11 +18,11 @@ export class TopicService {
   }
 
   getTopics(): Observable<Topic[]> {
-    return Observable.of(TOPICS);
+    return this.apiService.get("/topic");
   }
 
   getTopic(id: number): Observable<Topic> {
-    return Observable.of(TOPICS.filter((topic: Topic) => topic.id === id)[0]);
+    return this.apiService.get(`/topic/${id}`);
   }
 
 }

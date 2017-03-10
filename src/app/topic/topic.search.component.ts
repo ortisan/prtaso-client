@@ -29,7 +29,7 @@ export class TopicSearchComponent implements OnInit {
     message: ['', Validators.required],
   });
 
-  onSelect(topic: Topic) {
+  select(topic: Topic) {
     this.router.navigate(["/topic", topic.id])
   }
 
