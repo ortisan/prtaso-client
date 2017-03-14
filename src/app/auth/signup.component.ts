@@ -6,10 +6,10 @@ import {Router} from "@angular/router";
 import {StorageService} from "../shared/services/storage.service";
 
 @Component({
-  selector: 'register',
-  templateUrl: 'register.component.html'
+  selector: 'signup',
+  templateUrl: 'signup.component.html'
 })
-export class RegisterComponent {
+export class SignupComponent {
 
   hasErrors: boolean;
 
@@ -22,7 +22,7 @@ export class RegisterComponent {
     password: ['', Validators.required],
   });
 
-  register(event: any) {
+  signup(event: any) {
     this.userService.save(this.registerForm.value).subscribe((user: User) => {
       this.storageService.saveCurrentUser(user);
       this.router.navigate(['/home']);

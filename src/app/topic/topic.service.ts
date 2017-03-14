@@ -5,7 +5,6 @@ import {Injectable} from "@angular/core";
 import {Observable} from "rxjs/Rx";
 import {ApiService} from "../shared/services/api.service";
 import {Topic} from "../shared/models/topic.model";
-import {TOPICS} from "../shared/services/mock.topic";
 
 @Injectable()
 export class TopicService {
@@ -14,15 +13,15 @@ export class TopicService {
   }
 
   save(topic: Topic): Observable <Topic> {
-    return this.apiService.post("/topic", topic);
+    return this.apiService.post("/topics", topic);
   }
 
   getTopics(): Observable<Topic[]> {
-    return this.apiService.get("/topic");
+    return this.apiService.get("/topics");
   }
 
   getTopic(id: number): Observable<Topic> {
-    return this.apiService.get(`/topic/${id}`);
+    return this.apiService.get(`/topics/${id}`);
   }
 
 }

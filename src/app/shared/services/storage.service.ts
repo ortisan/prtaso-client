@@ -20,11 +20,15 @@ export class StorageService {
   }
 
   getCurrentUser(): User {
-    return this.getObject(StorageService.CURRENT_USER_KEY) as User;
+    let userStr = this.getObject(StorageService.CURRENT_USER_KEY) as string;
+    if (userStr) {
+      return JSON.parse(userStr) as User;
+    }
+    return null;
   }
 
   saveCurrentUser(user: User): void {
-    this.saveObject(StorageService.CURRENT_USER_KEY, user);
+    this.saveObject(StorageService.CURRENT_USER_KEY, JSON.stringify(user));
   }
 
   deleteCurrentUser(): void {
@@ -33,7 +37,9 @@ export class StorageService {
 
   getToken(): string {
     let currentUser = this.getCurrentUser();
+    console.log("Current user:" + currentUser);
     if (currentUser) {
+      console.log("Current user token:" + currentUser.token);
       return currentUser.token;
     }
     return null;

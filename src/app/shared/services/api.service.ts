@@ -21,6 +21,8 @@ export class ApiService {
 
     let token = this.storageService.getToken();
 
+    console.log("token:", token);
+
     if (token) {
       headersConfig['Authorization'] = `Bearer ${token}`;
     }

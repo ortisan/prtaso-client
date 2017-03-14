@@ -23,26 +23,33 @@ export class TopicFormComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.route.params.switchMap((params: Params) => this.topicService.getTopic(+params["id"])).subscribe((topic: Topic) => {
-      this.topic = topic;
-      this.topicForm = this.formBuilder.group({
-        id: [this.topic.id, Validators.required],
-        title: [this.topic.title, Validators.required],
-        sendDate: [moment(this.topic.sendDate).format("YYYY-MM-DDThh:mm")],
-        message: [this.topic.message, Validators.required],
-      });
+    this.topicForm = this.formBuilder.group({
+      title: ['', Validators.required],
+      sendDate: [moment(new Date()).format("YYYY-MM-DDTHH:mm"), Validators.required],
+      message: ['', Validators.required],
     });
+
+    // this.route.params.switchMap((params: Params) => this.topicService.getTopic(+params["id"])).subscribe((topic: Topic) => {
+    //   this.topic = topic;
+    //
+    // });
   }
 
   onSaveOrUpdate(event: any) {
-    return this.topicService.save(this.topicForm.value).subscribe((topic: Topic) => {
+
+    let topicSource = new Topic();
+    topicSource.title = this.topicForm.value.title;
+    topicSource.message = this.topicForm.value.message;
+    topicSource.sendDate = moment(this.topicForm.value.sendDate, 'YYYY-MM-DDThh:mm:ss.ms').toDate();
+
+    return this.topicService.save(topicSource).subscribe((topic: Topic) => {
       this.router.navigate(['/topics']);
       this.hasErrors = false;
     }, (error) => this.hasErrors = true);
   }
 
   gotoTopic() {
-    this.router.navigate(["/topic"])
+    this.router.navigate(["/topics"])
   }
 
 }
