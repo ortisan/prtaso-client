@@ -30,11 +30,12 @@ export class TopicSearchComponent implements OnInit {
   });
 
   select(topic: Topic) {
-    this.router.navigate(["/topics", topic.id])
+    console.log(`/topics/${topic.id}`);
+    this.router.navigate(["/topics/detail", topic.id])
   }
 
   new() {
-    this.router.navigate(["/topics-form"])
+    this.router.navigate(["/topics/new"])
   }
 
   getAll() {

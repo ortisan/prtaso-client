@@ -16,11 +16,16 @@ export class TopicService {
     return this.apiService.post("/topics", topic);
   }
 
+  update(topic: Topic): Observable <Topic> {
+    return this.apiService.put("/topics", topic);
+  }
+
   getTopics(): Observable<Topic[]> {
     return this.apiService.get("/topics");
   }
 
   getTopic(id: number): Observable<Topic> {
+    console.log(`/topics/${id}`);
     return this.apiService.get(`/topics/${id}`);
   }
 

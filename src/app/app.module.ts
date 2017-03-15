@@ -20,15 +20,16 @@ import {TopicDetailComponent} from "./topic/topic.detail.component";
 import {SecurityActivate} from "./auth/security.activate";
 import {DateTimePickerModule} from 'ng2-date-time-picker';
 import {LoggerService} from "./shared/services/logger.service";
+import {DateTransformerPipe} from "./shared/datetransformer.pipe";
 
 const appRoutes: Routes = [
   {path: 'signup', component: SignupComponent},
   {path: 'signin', component: SigninComponent},
   {path: 'home', component: HomeComponent},
   {path: 'topics', component: TopicSearchComponent},
-  {path: 'topics/:id', component: TopicDetailComponent},
-  {path: 'topics-form', component: TopicFormComponent},
-  {path: 'topics-form/:id', component: TopicFormComponent},
+  {path: 'topics/detail/:id', component: TopicDetailComponent},
+  {path: 'topics/new', component: TopicFormComponent},
+  {path: 'topics/edit/:id', component: TopicFormComponent},
   {path: '', redirectTo: '/home', pathMatch: 'full'},
   {path: '**', component: PageNotFoundComponent}
 ];
@@ -36,7 +37,7 @@ const appRoutes: Routes = [
 
 @NgModule({
   imports: [DateTimePickerModule, BrowserModule, HttpModule, ReactiveFormsModule, RouterModule.forRoot(appRoutes)],
-  declarations: [AppComponent, PageNotFoundComponent, HomeComponent, HeaderComponent, FooterComponent, SignupComponent, SigninComponent, TopicSearchComponent, TopicDetailComponent, TopicFormComponent],
+  declarations: [AppComponent, PageNotFoundComponent, HomeComponent, HeaderComponent, FooterComponent, SignupComponent, SigninComponent, TopicSearchComponent, TopicDetailComponent, TopicFormComponent, DateTransformerPipe],
   bootstrap: [AppComponent],
   providers: [ApiService, StorageService, UserService, TopicService, SecurityActivate, LoggerService]
 

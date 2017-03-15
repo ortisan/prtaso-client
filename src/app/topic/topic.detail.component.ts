@@ -16,15 +16,20 @@ export class TopicDetailComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.route.params.switchMap((params: Params) => this.topicService.getTopic(+params["id"])).subscribe((topic: Topic) => this.topic = topic);
+    this.topic = new Topic();
+    console.log(`${this.route.params}`);
+    this.route.params.subscribe(params => {
+      let id = +params["id"];
+      this.topicService.getTopic(id).subscribe((topic: Topic) => this.topic = topic);
+    });
   }
 
   edit() {
-    this.router.navigate(['/topic-form', this.topic.id]);
+    this.router.navigate(['/topics/edit', this.topic.id]);
   }
 
   gotoTopic() {
-    this.router.navigate(['/topic']);
+    this.router.navigate(['/topics']);
   }
 
 }

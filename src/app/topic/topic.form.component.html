@@ -1,6 +1,8 @@
 <div class="container">
   <h1>Topic</h1>
-  <form [formGroup]="topicForm" (ngSubmit)="onSaveOrUpdate($event)">
+  <form novalidate [formGroup]="topicForm" (ngSubmit)="onSaveOrUpdate($event)">
+
+    <input id="id" formControlName="id" type="text">
 
     <div class="alert alert-danger" role="alert" *ngIf="hasErrors">
       <strong>Error!</strong>
