@@ -26,7 +26,7 @@ export class UserService {
   signin(user: User): Observable <boolean> {
     return this.apiService.post('/signin', user).map((signResult: SignResult) => {
       console.log("Result:" + signResult);
-
+      user.id = signResult.userId;
       user.token = signResult.token;
       this.storageService.saveCurrentUser(user);
       return true;

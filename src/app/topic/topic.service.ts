@@ -5,6 +5,7 @@ import {Injectable} from "@angular/core";
 import {Observable} from "rxjs/Rx";
 import {ApiService} from "../shared/services/api.service";
 import {Topic} from "../shared/models/topic.model";
+import {Subscription} from "../shared/models/subscription.model";
 
 @Injectable()
 export class TopicService {
@@ -27,6 +28,11 @@ export class TopicService {
   getTopic(id: number): Observable<Topic> {
     console.log(`/topics/${id}`);
     return this.apiService.get(`/topics/${id}`);
+  }
+
+  // TODO change location
+  subscribe(subscription: Subscription): Observable <Subscription> {
+    return this.apiService.post("/subscriptions", subscription);
   }
 
 }
