@@ -1,8 +1,16 @@
 <div class="container">
-  <div><label>Id:</label>{{topic.id}}</div>
-  <div><label>title:</label>{{topic.title}}</div>
-  <div><label>mssage:</label>{{topic.message}}</div>
-  <div><label>SendDate:</label>{{topic.sendDate | dateTransformer:hh}}</div>
-  <button (click)="gotoTopic()" class="btn btn-default">Back</button>
+  <h4>Topic</h4>
+  <div class="row justify-content-center">
+    <div class="col-2"> Id:</div>
+    <div class="col-10"> {{topic.id}}</div>
+    <div class="col-2"> title:</div>
+    <div class="col-10"> {{topic.title}}</div>
+    <div class="col-2"> mssage:</div>
+    <div class="col-10"> {{topic.message}}</div>
+    <div class="col-2"> SendDate:</div>
+    <div class="col-10"> {{topic.sendDate | dateTransformer:hh}}</div>
+  </div>
+
+  <button (click)="back()" class="btn btn-default">Back</button>
   <button (click)="edit()" class="btn btn-default">Edit</button>
 </div>

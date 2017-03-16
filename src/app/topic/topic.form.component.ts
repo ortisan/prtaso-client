@@ -1,9 +1,11 @@
 import {Component, OnInit} from "@angular/core";
 import {TopicService} from "./topic.service";
 import {FormBuilder, Validators, FormGroup} from "@angular/forms";
-import {Router, ActivatedRoute, Params} from "@angular/router";
+import {Router, ActivatedRoute} from "@angular/router";
+import {Location} from "@angular/common";
+
 import {Topic} from "../shared/models/topic.model";
-import * as moment from 'moment'
+import * as moment from "moment";
 import {Observable} from "rxjs";
 
 @Component({
@@ -18,8 +20,9 @@ export class TopicFormComponent implements OnInit {
 
   constructor(private route: ActivatedRoute,
               private router: Router,
-              private topicService: TopicService,
-              private formBuilder: FormBuilder) {
+              private formBuilder: FormBuilder,
+              private location: Location,
+              private topicService: TopicService) {
   }
 
   ngOnInit(): void {
@@ -69,6 +72,10 @@ export class TopicFormComponent implements OnInit {
       this.router.navigate(['/topics']);
       this.hasErrors = false;
     }, (error) => this.hasErrors = true);
+  }
+
+  back() {
+    this.location.back();
   }
 
   gotoTopic() {

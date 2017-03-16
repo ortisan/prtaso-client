@@ -1,7 +1,9 @@
 import {Component, OnInit} from "@angular/core";
-import {Router, ActivatedRoute, Params} from "@angular/router";
+import {Router, ActivatedRoute} from "@angular/router";
 import {TopicService} from "./topic.service";
 import {Topic} from "../shared/models/topic.model";
+import {Location} from "@angular/common";
+
 @Component({
   selector: "topic-detail",
   templateUrl: "topic.detail.component.html"
@@ -12,6 +14,7 @@ export class TopicDetailComponent implements OnInit {
 
   constructor(private route: ActivatedRoute,
               private router: Router,
+              private location: Location,
               private topicService: TopicService) {
   }
 
@@ -26,6 +29,10 @@ export class TopicDetailComponent implements OnInit {
 
   edit() {
     this.router.navigate(['/topics/edit', this.topic.id]);
+  }
+
+  back() {
+    this.location.back();
   }
 
   gotoTopic() {

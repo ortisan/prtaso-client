@@ -6,7 +6,6 @@ import {TopicFormComponent} from "./topic.form.component";
 import {TopicService} from "./topic.service";
 import {BrowserModule} from "@angular/platform-browser";
 
-
 const topicRoutes: Routes = [
   {path: 'topic', component: TopicSearchComponent},
   {path: 'topic/:id', component: TopicDetailComponent},

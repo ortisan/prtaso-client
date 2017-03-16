@@ -4,40 +4,46 @@
   </button>
   <a class="navbar-brand" href="#">PRTASO</a>
 
-  <div class="collapse navbar-collapse" data-toggle="collapse" data-target=".navbar-nav">
-    <ng-container *ngIf="isAuthenticated()">
-      <ul class="navbar-nav mr-auto">
-        <li class="nav-item active">
-          <a class="nav-link" href="#">Home</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link"
-             routerLink="/topics"
-             routerLinkActive="active">
-            Topics
-          </a>
-        </li>
-      </ul>
+  <ng-container *ngIf="isAuthenticated()">
+    <ul class="navbar-nav mr-auto">
+      <li class="nav-item active">
+        <a class="nav-link" href="#">Home</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link"
+           routerLink="/topics"
+           routerLinkActive="active">
+          Topics
+        </a>
+      </li>
+    </ul>
 
-      <a class="btn btn-link btn-outline-primary" href="#" (click)="logout()">
-        Logout
-      </a>
-    </ng-container>
+    <div class="btn-group">
+      <button type="button" class="btn btn-link dropdown-toggle" data-toggle="dropdown" aria-haspopup="true"
+              aria-expanded="false">
+        {{getCurrentUser().username}}
+      </button>
+      <div class="dropdown-menu dropdown-menu-right">
+        <a class="btn btn-link" href="#" (click)="logout()">
+          Logout
+        </a>
+      </div>
+    </div>
+  </ng-container>
 
-    <ng-container *ngIf="!isAuthenticated()">
-      <a class="btn btn-link btn-outline-primary"
-         routerLink="/signin"
-         routerLinkActive="active">
-        Signin
-      </a>
-      <a class="btn btn-link btn-outline-primary"
-         routerLink="/signup"
-         routerLinkActive="active">
-        Signup
-      </a>
-    </ng-container>
+  <ng-container *ngIf="!isAuthenticated()">
+    <a class="btn btn-link btn-outline-primary"
+       routerLink="/signin"
+       routerLinkActive="active">
+      Signin
+    </a>
+    <a class="btn btn-link btn-outline-primary"
+       routerLink="/signup"
+       routerLinkActive="active">
+      Signup
+    </a>
+  </ng-container>
 
-  </div>
 </nav>
 
 

@@ -11,6 +11,10 @@ export class UserService {
   constructor(private apiService: ApiService, private storageService: StorageService) {
   }
 
+  getCurrentUser(): User {
+    return this.storageService.getCurrentUser();
+  }
+
   isAuthenticated(): boolean {
     return this.storageService.getCurrentUser() != null;
   }
