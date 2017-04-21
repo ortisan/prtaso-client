@@ -50,14 +50,18 @@ export class ApiService {
       .map((res: Response) => res.json());
   }
 
-  post(path: string, body: Object = {}): Observable<any> {
+  postWithHost(host: string, path: string, body: Object = {}): Observable<any> {
     return this.http.post(
-      `${environment.api_url}${path}`,
+      `${host}${path}`,
       JSON.stringify(body), {headers: this.setHeaders()}
     )
       .map((res: Response) => res.json())
       .catch(this.formatErrors);
 
+  }
+
+  post(path: string, body: Object = {}): Observable<any> {
+    return this.postWithHost(environment.api_url, path, body);
   }
 
   delete(path: string): Observable<any> {
@@ -68,4 +72,6 @@ export class ApiService {
       .catch(this.formatErrors)
       .map((res: Response) => res.json());
   }
+
+
 }

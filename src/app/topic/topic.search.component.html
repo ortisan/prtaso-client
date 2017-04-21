@@ -1,5 +1,10 @@
 <div class="container">
   <div id="search-component">
+
+    <div class="alert alert-success" role="alert">
+      <strong>Sucess!</strong>
+    </div>
+
     <h4>Topics</h4>
 
     <button type="button" class="btn btn-secondary float-right" (click)="new()">New</button>
@@ -11,15 +16,19 @@
         <th>Title</th>
         <th>Created By</th>
         <th>Send Date</th>
+        <th></th>
       </tr>
       </thead>
       <tbody>
-      <tr *ngFor="let topic of topics" (click)="select(topic)" class="selectable">
+      <tr *ngFor="let topic of topics">
         <th scope="row">{{topic.id}}</th>
-        <!--// TODO CREATE COMPONENT-->
-        <td>{{topic.title}} <button (click)="subscribe(topic.id)">Subscribe</button></td>
+        <td (click)="select(topic)" class="selectable">{{topic.title}}</td>
         <td>tentativafc</td>
         <td>{{topic.sendDate | date: 'dd/MM/yyyy'}}</td>
+        <!--// TODO CREATE COMPONENT-->
+        <td>
+          <button type="button" class="btn btn-secondary float-right" (click)="subscribe(topic.id)">Subscribe</button>
+        </td>
       </tr>
       </tbody>
     </table>

@@ -4,3 +4,4 @@ src/**/*.map
 src/**/*.js
 *.log
 dist/
+npm-debug.log.*

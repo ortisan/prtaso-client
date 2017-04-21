@@ -4,6 +4,8 @@ import {ApiService} from "./api.service";
 import {User} from "../models/user.model";
 import {StorageService} from "./storage.service";
 import {SignResult} from "../models/sign.result.model";
+import {environment} from '../../environments/environment';
+
 
 @Injectable()
 export class UserService {
@@ -23,7 +25,7 @@ export class UserService {
     return this.apiService.post('/user', user);
   }
 
-  signin(user: User): Observable <boolean> {
+  signin(user: User): Observable<boolean> {
     return this.apiService.post('/signin', user).map((signResult: SignResult) => {
       console.log("Result:" + signResult);
       user.id = signResult.userId;
@@ -31,6 +33,11 @@ export class UserService {
       this.storageService.saveCurrentUser(user);
       return true;
     });
+  }
+
+  signinTwitter() {
+    // TODO Maybe need create service to control the window
+    window.open(`${environment.api_url}/twitter/signin`);
   }
 
   logout(): void {
