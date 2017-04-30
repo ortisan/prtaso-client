@@ -22,7 +22,7 @@ export class UserService {
   }
 
   save(user: User): Observable<any> {
-    return this.apiService.post('/user', user);
+    return this.apiService.post('/users', user);
   }
 
   signin(user: User): Observable<boolean> {
@@ -35,9 +35,25 @@ export class UserService {
     });
   }
 
+  signinWithToken(token: string): Observable<boolean> {
+    return this.apiService.get(`/signin/${token}`).map((signResult: SignResult) => {
+      const user = new User();
+      user.id = signResult.userId;
+      user.name = signResult.name
+      user.username = signResult.username;
+      user.token = signResult.token;
+      this.storageService.saveCurrentUser(user);
+      return true;
+    });
+  }
+
   signinTwitter() {
     // TODO Maybe need create service to control the window
-    window.open(`${environment.api_url}/twitter/signin`);
+    window.location.href = `${environment.api_url}/twitter/signin`;
+  }
+
+  getUserInfoByToken(token: string): Observable<User> {
+    return this.apiService.post('/users', {token: token});
   }
 
   logout(): void {

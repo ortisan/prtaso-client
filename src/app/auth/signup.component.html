@@ -9,25 +9,29 @@
 
       <signup-twitter></signup-twitter>
 
-      ou
+      or
 
-      <div class="form-group">
-        <label for="name">Name</label>
-        <input class="form-control" id="name" formControlName="name" type="text" placeholder="Your name">
+
+      <div class="col">
+        <div class="form-group">
+          <label for="name">Name</label>
+          <input class="form-control" id="name" formControlName="name" type="text" placeholder="Your name">
+        </div>
+
+        <div class="form-group">
+          <label for="username">Username</label>
+          <input class="form-control" id="username" formControlName="username" type="text"
+                 placeholder="Your username">
+        </div>
+        <div class="form-group">
+          <label for="password">Password</label>
+          <input class="form-control" id="password" formControlName="password" type="password"
+                 placeholder="Your password">
+        </div>
+
+        <button type="submit" class="btn btn-default">Register</button>
+
       </div>
-
-      <div class="form-group">
-        <label for="username">Username</label>
-        <input class="form-control" id="username" formControlName="username" type="text" placeholder="Your username">
-      </div>
-      <div class="form-group">
-        <label for="password">Password</label>
-        <input class="form-control" id="password" formControlName="password" type="password"
-               placeholder="Your password">
-      </div>
-
-      <button type="submit" class="btn btn-default">Register</button>
-
     </div>
   </form>
 </div>

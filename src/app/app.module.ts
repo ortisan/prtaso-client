@@ -27,7 +27,7 @@ import {SignupTwitterComponent} from "./auth/signup.twitter.component";
 const appRoutes: Routes = [
   {path: 'signup', component: SignupComponent},
   {path: 'signin', component: SigninComponent},
-  {path: 'twitter/callback/:token', component: TwitterCallbackComponent},
+  {path: 'twitter/callback', component: TwitterCallbackComponent},
   {path: 'home', component: HomeComponent},
   {path: 'topics', component: TopicSearchComponent},
   {path: 'topics/detail/:id', component: TopicDetailComponent},
